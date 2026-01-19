@@ -60,7 +60,4 @@ Using the exact notebook logic on the included CSV:
 > Notes:
 > - This is a **baseline** model (Linear Regression). Performance can improve with stronger models (e.g., XGBoost, RandomForest) and time-aware validation.
 
----
-
-## Repo Structure
 
