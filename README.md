@@ -1,4 +1,4 @@
-# GLD Price Prediction (Gold ETF) — EDA + Linear Regression
+# GOLD Price Prediction (Gold ETF) — EDA + Linear Regression
 
 This repo predicts **GLD (SPDR Gold Shares ETF)** price using a small macro/market feature set and a simple baseline model.
 
