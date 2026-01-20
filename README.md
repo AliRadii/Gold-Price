@@ -91,19 +91,4 @@ Each model is evaluated using:
 - **MAE** (lower is better)
 - **MSE** (lower is better)
 
----
 
-## 🏁 Model Comparison (Recommended Output)
-After running the notebook, you can summarize results like this:
-
-| Model | R² Score | MAE | MSE |
-|------|----------|-----|-----|
-| Linear Regression | ✅ | ✅ | ✅ |
-| SVR | ✅ | ✅ | ✅ |
-| KNN | ✅ | ✅ | ✅ |
-
-> (Values depend on preprocessing + training split and will appear when you run the notebook.)
-
----
-
-## 📁 Repository Structure
