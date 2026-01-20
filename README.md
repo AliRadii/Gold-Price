@@ -91,4 +91,16 @@ Each model is evaluated using:
 - **MAE** (lower is better)
 - **MSE** (lower is better)
 
+---
 
+## 🏁 Model Results (Test Set)
+
+| Model | R² Score | MAE | MSE |
+|------|----------|------|------|
+| **Linear Regression** | **0.9173** | **3.8081** | **30.8981** |
+| **SVR** | **0.9348** | **2.9591** | **24.3460** |
+| **KNN Regressor** | **0.9868** | **1.2708** | **4.9382** |
+
+✅ **Best Model:** **KNN Regressor** (highest R² and lowest error)
+
+---
