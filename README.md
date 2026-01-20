@@ -1,63 +1,109 @@
-# GOLD Price Prediction (Gold ETF) — EDA + Linear Regression
+# 🟡 GLD Price Prediction (Gold ETF) — Linear Regression, SVR & KNN
 
-This repo predicts **GLD (SPDR Gold Shares ETF)** price using a small macro/market feature set and a simple baseline model.
-
-It includes:
-- Quick **EDA** (pairplot, scatterplots, boxplots, histograms)
-- **Correlation heatmap**
-- **Outlier removal** using the IQR rule
-- **Feature scaling** with `MinMaxScaler`
-- Baseline **Linear Regression** model + evaluation
+Predicting **GLD (SPDR Gold Shares ETF)** price using market and macroeconomic indicators with multiple regression models.  
+This project includes full **EDA**, **preprocessing**, and a **model comparison** between classic ML regressors.
 
 ---
 
-## Dataset
+## ✨ Highlights
+✅ Clean EDA with visual insights  
+✅ Outlier detection & removal (IQR method)  
+✅ Feature scaling using **MinMaxScaler**  
+✅ Trains and compares **3 regression models**:
+- Linear Regression (Baseline)
+- Support Vector Regression (SVR)
+- K-Nearest Neighbors Regression (KNN)
 
+✅ Evaluation using:
+- **R² Score**
+- **MAE**
+- **MSE**
+
+---
+
+## 📌 Dataset
 File: `gld_price_data.csv`
 
-Columns:
-- `Date` (dropped for modeling)
-- `SPX` — S&P 500 index
-- `USO` — Oil ETF proxy
-- `SLV` — Silver ETF proxy
-- `EUR/USD` — Euro / US Dollar exchange rate
-- `GLD` — Target (Gold ETF price)
+**Target**
+- `GLD` → Gold ETF price
+
+**Features**
+- `SPX` → S&P 500 Index
+- `USO` → Oil ETF proxy
+- `SLV` → Silver ETF proxy
+- `EUR/USD` → Euro to USD exchange rate
+
+**Other**
+- `Date` → removed before modeling
 
 ---
 
-## Project Workflow
-
-1. Load dataset
-2. Drop `Date`
-3. EDA:
-   - Pairplot for relationships
-   - `SLV` vs `GLD` scatter plot
-   - Boxplots + histograms (per feature)
-   - Correlation heatmap
-4. Remove outliers (IQR method) on feature columns
-5. Scale features using `MinMaxScaler`
-6. Train/Test split (`test_size=0.2`, `random_state=42`)
-7. Train `LinearRegression`
-8. Evaluate with:
-   - `R2`
-   - `MAE`
-   - `MSE`
-9. Visualize predictions vs true values (scatter plot)
+## 🔎 Exploratory Data Analysis (EDA)
+The notebook explores the dataset using:
+- **Pairplot** (feature relationships)
+- **Scatterplots** (e.g., `SLV` vs `GLD`)
+- **Histograms** (distribution of features)
+- **Boxplots** (outlier visualization)
+- **Correlation heatmap** (feature importance/relationships)
 
 ---
 
-## Results (reproducible)
+## 🧹 Preprocessing
+Steps applied before training:
 
-Using the exact notebook logic on the included CSV:
+### ✅ 1) Drop non-numeric column
+- `Date` removed
 
-- Rows before outlier removal: **2290**
-- Rows after outlier removal: **2146**
-- Train R² (model.score on train): **0.8913**
-- Test R²: **0.8660**
-- MAE: **5.2418**
-- MSE: **56.8644**
+### ✅ 2) Outlier Removal (IQR Method)
+Outliers are removed from numeric columns using:
 
-> Notes:
-> - This is a **baseline** model (Linear Regression). Performance can improve with stronger models (e.g., XGBoost, RandomForest) and time-aware validation.
+- Q1 (25th percentile)
+- Q3 (75th percentile)
+- IQR = Q3 − Q1  
+- Keep values inside `[Q1 − 1.5*IQR, Q3 + 1.5*IQR]`
 
+### ✅ 3) Feature Scaling
+- `MinMaxScaler` is applied to scale features into `[0, 1]`
 
+### ✅ 4) Train/Test Split
+- `test_size = 0.2`
+- `random_state = 42`
+
+---
+
+## 🤖 Models Used
+
+### 1) Linear Regression (Baseline)
+A simple baseline regression model used for comparison.
+
+### 2) SVR (Support Vector Regression)
+Effective for non-linear patterns (depending on kernel choice).
+
+### 3) KNN Regressor
+Predicts target value based on the nearest neighbors in feature space.
+
+---
+
+## 📊 Evaluation Metrics
+Each model is evaluated using:
+
+- **R² Score** (higher is better)
+- **MAE** (lower is better)
+- **MSE** (lower is better)
+
+---
+
+## 🏁 Model Comparison (Recommended Output)
+After running the notebook, you can summarize results like this:
+
+| Model | R² Score | MAE | MSE |
+|------|----------|-----|-----|
+| Linear Regression | ✅ | ✅ | ✅ |
+| SVR | ✅ | ✅ | ✅ |
+| KNN | ✅ | ✅ | ✅ |
+
+> (Values depend on preprocessing + training split and will appear when you run the notebook.)
+
+---
+
+## 📁 Repository Structure
